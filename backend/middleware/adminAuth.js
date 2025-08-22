@@ -7,8 +7,8 @@ const adminAuth = (req, res, next) => {
   try {
     const user = jwt.verify(token, "secretkey");
     if (user.role !== "admin") return res.status(403).json({ message: "Forbidden: Admins only" });
-    req.user = user;    // SET req.user here
-    next();             // do NOT send response here
+    req.user = user;    
+    next();             
   } catch (error) {
     res.status(401).json({ message: "Invalid token" });
   }

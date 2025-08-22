@@ -6,8 +6,8 @@ const auth = (req, res, next) => {
 
   try {
     const result = jwt.verify(token, "secretkey");
-    req.user = result;   // SET req.user here for downstream use
-    next();              // call next without sending any response here
+    req.user = result;   
+    next();              
   } catch (error) {
     res.status(401).json({ message: "Invalid token" });
   }
